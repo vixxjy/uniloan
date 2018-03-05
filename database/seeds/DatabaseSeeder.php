@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
   public function run()
     {
         // Ask for confirmation to refresh migration
-        if ($this->command->confirm('Do you wish to refresh migration before seeding, Make sure it will clear all old data ?')) {
-            $this->command->call('migrate:refresh');
-            $this->command->warn("Data deleted, starting from fresh database.");
-        }
+        // if ($this->command->confirm('Do you wish to refresh migration before seeding, Make sure it will clear all old data ?')) {
+        //     $this->command->call('migrate:refresh');
+        //     $this->command->warn("Data deleted, starting from fresh database.");
+        // }
         // Seed the default permissions
         $permissions = Permission::defaultPermissions();
         foreach ($permissions as $permission) {
