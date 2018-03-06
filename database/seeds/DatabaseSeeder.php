@@ -64,9 +64,10 @@ class DatabaseSeeder extends Seeder
      */
     private function createUser($role)
     {
-        $user = factory(User::class)->create();
-        // $user = User::class;
-        $user->assignRole($role->name);
+        // $user = factory(User::class)->create();
+        $user = User::class;
+        $user->roles()->attach($request->roles);
+        // $user->assignRole($role->name);
         if( $role->name == 'Admin' ) {
             $this->command->info('Admin login details:');
             $this->command->warn('Username : "unijos@admin.com"');
