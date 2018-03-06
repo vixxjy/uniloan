@@ -48,7 +48,8 @@ class DatabaseSeeder extends Seeder
                     $role->permissions()->sync(Permission::where('name', 'LIKE', 'view_%')->get());
                 }
                 // create one user for each role
-                $this->createUser($role);
+                // $this->createUser($role);
+                $this->createSeeder();
             }
             $this->command->info('Roles ' . $roles . ' added successfully');
         } else {
@@ -62,20 +63,20 @@ class DatabaseSeeder extends Seeder
      *
      * @param $role
      */
-    private function createUser($role)
-    {
-        $user = factory(User::class)->create();
-        // $user = User::class;
-        $user->assignRole($role->name);
-        if( $role->name == 'Admin' ) {
-            $this->command->info('Admin login details:');
-            $this->command->warn('Username : "unijos@admin.com"');
-            $this->command->warn('Password : "secret"');
-        }
-    }
+    // private function createUser($role)
+    // {
+    //     $user = factory(User::class)->create();
+    //     // $user = User::class;
+    //     $user->assignRole($role->name);
+    //     if( $role->name == 'Admin' ) {
+    //         $this->command->info('Admin login details:');
+    //         $this->command->warn('Username : "unijos@admin.com"');
+    //         $this->command->warn('Password : "secret"');
+    //     }
+    // }
     
     
-    public function createSeeder(){
+    private function createSeeder(){
         $role_admin = Role::where('name', 'Admin')->first();
         $role_staff = Role::where('name', 'Staff')->first();
         $role_member = Role::where('name', 'Member')->first();
