@@ -74,5 +74,41 @@ class DatabaseSeeder extends Seeder
         }
     }
     
+    
+    public function createSeeder(){
+        $role_admin = Role::where('name', 'Admin')->first();
+        $role_staff = Role::where('name', 'Staff')->first();
+        $role_member = Role::where('name', 'Member')->first();
+        
+        
+        $admin = new User();
+        // $admin->fname = 'Admin';
+        $admin->name = 'Admin';
+        $admin->email = 'test@admin.com';
+        $admin->password = bcrypt('secret');
+        $admin->save();
+        
+        $admin->roles()->attach($role_admin);
+        
+        $admin = new User();
+        // $admin->fname = 'Freelencer';
+        $admin->name = 'Staff';
+        $admin->email = 'test@staff.com';
+        $admin->password = bcrypt('secret');
+        $admin->save();
+        
+        $admin->roles()->attach($role_staff);
+        
+        
+        $admin = new User();
+        // $admin->fname = 'Freelencer';
+        $admin->name = 'Member';
+        $admin->email = 'test@member.com';
+        $admin->password = bcrypt('secret');
+        $admin->save();
+        
+        $admin->roles()->attach($role_staff);
+    }
+    
 }
 
