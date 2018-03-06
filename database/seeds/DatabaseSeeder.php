@@ -48,7 +48,9 @@ class DatabaseSeeder extends Seeder
                     $role->permissions()->sync(Permission::where('name', 'LIKE', 'view_%')->get());
                 }
                 // create one user for each role
-                $this->createUser($role);
+                // $this->createUser($role);
+                
+                 $this->createUser();
             }
             $this->command->info('Roles ' . $roles . ' added successfully');
         } else {
@@ -62,18 +64,30 @@ class DatabaseSeeder extends Seeder
      *
      * @param $role
      */
-    private function createUser($role)
-    {
-        // $user = factory(User::class)->create();
-        $user = User::class;
-        $user->assignRole('Admin');
-        // $user->assignRole($role->name);
-        if( $role->name == 'Admin' ) {
-            $this->command->info('Admin login details:');
-            $this->command->warn('Username : "unijos@admin.com"');
-            $this->command->warn('Password : "secret"');
-        }
-    }
+    // private function createUser($role)
+    // {
+    //     // $user = factory(User::class)->create();
+    //     $user = User::class;
+    //     $user->assignRole('Admin');
+    //     // $user->assignRole($role->name);
+    //     if( $role->name == 'Admin' ) {
+    //         $this->command->info('Admin login details:');
+    //         $this->command->warn('Username : "unijos@admin.com"');
+    //         $this->command->warn('Password : "secret"');
+    //     }
+    // }
     
+    
+    private function createUser()
+    {
+        $admin = new User();
+        // $admin->fname = 'Admin';
+        $admin->name = 'Admin';
+        $admin->email = 'test@admin.com';
+        $admin->password = bcrypt('secret');
+        $admin->save();
+        
+        $admin->assignRole('Admin');
+    }
 }
 
