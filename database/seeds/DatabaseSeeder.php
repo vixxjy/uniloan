@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
         $user = User::class;
         // $user->assignRole($role->name);
         if($role->roles <> ''){
-            $user->roles()->attach($role->roles);
+            $user->roles()->attach($role->name);
         }
         if( $role->name == 'Admin' ) {
             $this->command->info('Admin login details:');
