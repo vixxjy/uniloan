@@ -17,7 +17,8 @@ Route::get('/', ['uses' => 'LoginController@signin', 'as' => 'signin']);
 Route::post('/signin', ['uses' => 'LoginController@postSignin', 'as' => 'user.signin']);
 Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'logout', 'middleware' => ['auth']]);
 
-Route::group(['prefix' => 'users', 'middleware' => ['auth']], function () {
+// Route::group(['prefix' => 'users', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'users'], function () {
     Route::get('/', 'UserController@index')->name('users.index');
     Route::get('/create', 'UserController@create')->name('users.create');
     Route::post('/create', 'UserController@store')->name('users.store');
