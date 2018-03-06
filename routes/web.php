@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/dashboard', ['uses'=> 'LoginController@index', 'as' => 'dashboard']);
+Route::get('/dashboard', ['uses'=> 'LoginController@index', 'as' => 'dashboard', 'middleware' => ['auth'] ]);
 
 Route::get('/', ['uses' => 'LoginController@signin', 'as' => 'signin']);
 Route::post('/signin', ['uses' => 'LoginController@postSignin', 'as' => 'user.signin']);
-Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'logout']);
+Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'logout', 'middleware' => ['auth']]);
 
 Route::group(['prefix' => 'users', 'middleware' => ['auth']], function () {
     Route::get('/', 'UserController@index')->name('users.index');
