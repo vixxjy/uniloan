@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
     {
         // $user = factory(User::class)->create();
         $user = User::class;
+        $user->assignRole('Admin');
         // $user->assignRole($role->name);
         if( $role->name == 'Admin' ) {
             $this->command->info('Admin login details:');
