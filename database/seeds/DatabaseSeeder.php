@@ -48,8 +48,7 @@ class DatabaseSeeder extends Seeder
                     $role->permissions()->sync(Permission::where('name', 'LIKE', 'view_%')->get());
                 }
                 // create one user for each role
-                // $this->createUser($role);
-                $this->createSeeder();
+                $this->createUser($role);
             }
             $this->command->info('Roles ' . $roles . ' added successfully');
         } else {
@@ -63,52 +62,16 @@ class DatabaseSeeder extends Seeder
      *
      * @param $role
      */
-    // private function createUser($role)
-    // {
-    //     $user = factory(User::class)->create();
-    //     // $user = User::class;
-    //     $user->assignRole($role->name);
-    //     if( $role->name == 'Admin' ) {
-    //         $this->command->info('Admin login details:');
-    //         $this->command->warn('Username : "unijos@admin.com"');
-    //         $this->command->warn('Password : "secret"');
-    //     }
-    // }
-    
-    
-    private function createSeeder(){
-        $role_admin = Role::where('name', 'Admin')->first();
-        $role_staff = Role::where('name', 'Staff')->first();
-        $role_member = Role::where('name', 'Member')->first();
-        
-        
-        $admin = new User();
-        // $admin->fname = 'Admin';
-        $admin->name = 'Admin';
-        $admin->email = 'test@admin.com';
-        $admin->password = bcrypt('secret');
-        $admin->save();
-        
-        $admin->roles()->attach($role_admin);
-        
-        $admin = new User();
-        // $admin->fname = 'Freelencer';
-        $admin->name = 'Staff';
-        $admin->email = 'test@staff.com';
-        $admin->password = bcrypt('secret');
-        $admin->save();
-        
-        $admin->roles()->attach($role_staff);
-        
-        
-        $admin = new User();
-        // $admin->fname = 'Freelencer';
-        $admin->name = 'Member';
-        $admin->email = 'test@member.com';
-        $admin->password = bcrypt('secret');
-        $admin->save();
-        
-        $admin->roles()->attach($role_staff);
+    private function createUser($role)
+    {
+        // $user = factory(User::class)->create();
+        $user = User::class;
+        // $user->assignRole($role->name);
+        if( $role->name == 'Admin' ) {
+            $this->command->info('Admin login details:');
+            $this->command->warn('Username : "unijos@admin.com"');
+            $this->command->warn('Password : "secret"');
+        }
     }
     
 }
