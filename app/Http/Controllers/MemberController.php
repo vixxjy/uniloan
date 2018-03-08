@@ -20,7 +20,10 @@ class MemberController extends Controller
         return view('members.index', ['members' => $members]);
     }
     public function create(){
-        return view('members.create');
+        $banks = ['Guaranty Trust Bank', 'Access Bank', 'Citibank', 'Diamond Bank', 'Ecobank', 'Enterprise Bank', 'Fidelity Bank', 'First Bank', 'First City Monument Bank',
+        'FSDH Merchant Bank', 'Heritage Bank Plc', 'Keystone Bank Limited', 'Rand Merchant Bank', 'Skye Bank', 'Stanbic IBTC Bank', 'Standard Chartered Bank',
+        'Sterling Bank', 'Union Bank of Nigeria', 'United Bank for Africa', 'Unity Bank Plc', 'Wema Bank', 'Zenith Bank', 'FCMB Group Plc', 'Jaiz Bank Limited'];
+        return view('members.create', ['banks' => $banks]);
     }
     
     public function store(Request $request){
@@ -43,7 +46,7 @@ class MemberController extends Controller
         
         $input = $request->all();
         
-        // dd($input); 
+        dd($input);
         
         $imageName = time().'.'.$input['image']->getClientOriginalExtension();
 

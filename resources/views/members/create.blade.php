@@ -113,9 +113,10 @@ Membership Registration Form
                                         <label for="example-month-input" class="col-2 col-form-label">Bank</label>
                                         <div class="col-10">
                                             <select class="custom-select col-12" id="inlineFormCustomSelect" name="bank">
-                                            <option selected="">Select your bank</option>
-                                              <option value="gtbank">GT Bank</option>
-                                                <option value="diamond">Diamond</option>
+                                            <option>Select your bank</option>
+                                              @foreach ($banks as $b => $bank)
+                                                <option value="{{ $banks[$b] }}">{{ $bank }}</option>
+                                                @endforeach
                                                
                                             </select>
                                         </div>
