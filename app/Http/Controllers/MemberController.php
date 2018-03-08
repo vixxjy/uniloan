@@ -46,7 +46,7 @@ class MemberController extends Controller
         
         $input = $request->all();
         
-        dd($input);
+        // dd($input);
         
         $imageName = time().'.'.$input['image']->getClientOriginalExtension();
 
