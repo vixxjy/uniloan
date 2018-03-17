@@ -13,7 +13,7 @@ use Session;
 class LoginController extends Controller
 {
     public function index(){
-        $users = User::Auth();
+        $users = Auth::user();
         $members = Member::all();
         $products = Product::all();
         $loans = Loan::all();
