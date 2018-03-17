@@ -17,6 +17,10 @@ Route::get('/', ['uses' => 'LoginController@signin', 'as' => 'signin']);
 Route::post('/signin', ['uses' => 'LoginController@postSignin', 'as' => 'user.signin']);
 Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'logout', 'middleware' => ['auth']]);
 
+// error routes
+Route::get('404',['as'=>'404','uses'=>'ErrorHandlerController@errorCode404']);
+Route::get('405',['as'=>'405','uses'=>'ErrorHandlerController@errorCode405']);
+
 // Route::group(['prefix' => 'users', 'middleware' => ['auth']], function () {
 Route::group(['prefix' => 'users', 'middleware' => ['auth']], function () {
     Route::get('/', 'UserController@index')->name('users.index');
