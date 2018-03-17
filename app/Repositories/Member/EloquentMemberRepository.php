@@ -2,11 +2,11 @@
 
 namespace App\Repositories\Member;
 use App\Repositories\Member\MemberContract;
+
 use App\Member;
 
 class EloquentMemberRepository implements MemberContract
 {
-
 	public function create($requestData)
     {
        return Member::create($requestData);
@@ -20,7 +20,7 @@ class EloquentMemberRepository implements MemberContract
     
     public function listAllMembers()
     {
-        return Member::all();
+        return Member::orderby('id', 'desc')->get();
     }
     
     
@@ -33,5 +33,9 @@ class EloquentMemberRepository implements MemberContract
     public function update($id, $requestData)
     {
        return Member::find($id)->update($requestData);
+    }
+    
+    public function register($id){
+        return Member::where('id', $id)->firstOrFail();
     }
 }

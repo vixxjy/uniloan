@@ -11,12 +11,18 @@ Membership Registration Form
 <div class="container-fluid">
        <div class="row page-titles">
                     <div class="col-md-6 col-8 align-self-center">
+                         @hasanyrole('Admin|Staff')
                         <a href="{{ route('members.index') }}"><button class="btn hidden-sm-down btn-success"><i class=""></i>View All Registered members</button></a>
-                         <a href="{{ route('users.profile') }}"><button class="btn hidden-sm-down btn-default"><i class=""></i>User Dashboard</button></a>
+                        @endhasanyrole
+                        @hasanyrole('Member')
+                         <a href="{{ route('dashboard') }}"><button class="btn hidden-sm-down btn-default"><i class=""></i>Back To Dashboard</button></a>
+                        @endhasanyrole
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
                         <button class="right-side-toggle waves-effect waves-light btn-info btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                         @hasanyrole('Admin|Staff')
                         <a href="{{ route('members.index') }}"><button class="btn pull-right hidden-sm-down btn-primary"><i class=""></i>Back</button></a>
+                         @endhasanyrole
                     </div>
                 </div>
                <!-- .row -->
@@ -113,7 +119,7 @@ Membership Registration Form
                                         <label for="example-month-input" class="col-2 col-form-label">Bank</label>
                                         <div class="col-10">
                                             <select class="custom-select col-12" id="inlineFormCustomSelect" name="bank">
-                                            <option>Select your bank</option>
+                                            <option style="color: red;">Select your bank</option>
                                               @foreach ($banks as $b => $bank)
                                                 <option value="{{ $banks[$b] }}">{{ $bank }}</option>
                                                 @endforeach
@@ -133,19 +139,53 @@ Membership Registration Form
                                             <input class="form-control" type="text" value="{{ old('acc_no') }}" name="acc_no" id="example-text-input">
                                         </div>
                                     </div>
+                                    <div class="form-group m-t-40 row">
+                                        <label for="example-text-input" class="col-2 col-form-label"></label>
+                                        <div class="col-10">
+                                            <input class="form-control" type="text" value="Unapproved" name="status" id="example-text-input" hidden>
+                                        </div>
+                                    </div>
                                      <div class="form-group">
                                     <label>Photo file upload</label>
                                     <input type="file" class="form-control" name="image" id="exampleInputFile" aria-describedby="fileHelp">
                                     </div>
-                                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                    <!--<button type="submit" class="btn btn-success waves-effect waves-light m-r-10" data-toggle="modal" data-target="#exampleModalLong">Submit</button>-->
                                     <!--<button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>-->
+                                    
+                                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h4 class="modal-title" id="exampleModalLongTitle">DECLARATION</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            I hereby declare that I have read the Bye-Laws of the Unijos Staff Multipurpose Cooperative Society Limited, and I am willing to abide by the Law on being elected as a member.
+                                            <br>
+                                            <br>
+                                            <h5>BURSAR AUTHORIZATION</h5>
+                                            I hereby authorize the Bursar to deduct the said amount from my salary and with immediate effect and pay same to the account of the University of Jos Staff Multipurpose Cooperative Society Limited.
+                                            The authorization stands irrevocable as long as I am an employee of the University or write to withdraw from being a member of the society if necessary. 
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">DECLINE</button>
+                                            <!--<button type="button" class="btn btn-primary">ACCEPT</button>-->
+                                               <button type="submit" class="btn btn-primary waves-effect waves-light m-r-10" data-toggle="modal" data-target="#exampleModalLong">ACCEPT</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                    
                                 </form>
+                                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" data-toggle="modal" data-target="#exampleModalLong">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
+     
 </div>
 
 

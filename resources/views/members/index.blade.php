@@ -93,7 +93,7 @@
                                                 <th><a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit icon-white"></i></a></th>
                                                 @endcan
                                                 @can('delete Member')
-                                                <th><a title='Delete' class='btn btn-danger' href="{{ route('members.destroy', $member->id) }}"> <i class="glyphicon glyphicon-trash icon-white"></i></a>
+                                                <th><a class='btn btn-danger' data-toggle="tooltip" data-placement="top" title="Are You sure, You want to delete this Member" href="{{ route('members.destroy', $member->id) }}"> <i class="glyphicon glyphicon-trash icon-white"></i></a>
                                                 @endcan
                                                 
                        </th>

@@ -29,6 +29,8 @@ class CreateMembersTable extends Migration
             $table->string('acc_name');
             $table->string('acc_no');
             $table->string('image');
+            $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

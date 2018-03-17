@@ -54,6 +54,7 @@ Route::group(['prefix' => 'members', 'middleware' => ['auth']], function () {
     Route::get('/edit/{id}', 'MemberController@edit')->name('members.edit');
     Route::post('/edit/{id}', 'MemberController@update')->name('members.update');
     Route::get('/delete/{id}', 'MemberController@destroy')->name('members.destroy');
+    Route::post('/register/{id}', 'MemberController@approve')->name('members.register');
 });
 
 Route::group(['prefix' => 'products', 'middleware' => ['auth']], function () {

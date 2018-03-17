@@ -10,13 +10,13 @@ use Session;
 
 class MemberController extends Controller
 {
-//     protected $repo;
-// 	public function __construct(MemberContract $memberContract) {
-// 		$this->repo = $memberContract;
-// 	}
+    protected $repo;
+	public function __construct(MemberContract $memberContract) {
+		$this->repo = $memberContract;
+	}
 	
     public function index(){
-        $members = Member::orderby('id', 'desc')->get();
+        $members = $this->repo->listAllMembers();
         return view('members.index', ['members' => $members]);
     }
     public function create(){
@@ -45,7 +45,8 @@ class MemberController extends Controller
         ]);
         
         $input = $request->all();
-        
+
+        ///$input['status'] = 'Unapproved';
         // dd($input);
         
         $imageName = time().'.'.$input['image']->getClientOriginalExtension();
@@ -54,7 +55,7 @@ class MemberController extends Controller
         
         $input['image'] = $imageName;
     
-        Member::create($input);
+         $this->repo->create($input);
         
         Session::flash('success', 'Thanks, Your application is been processed.');
         
@@ -62,12 +63,12 @@ class MemberController extends Controller
     }
     
     public function show($id){
-        $member = Member::findOrFail($id);
+        $member = $this->repo->find($id);
         return view('members.show', ['member' => $member]);
     }
     
     public function edit($id){
-         $member = Member::findOrFail($id);
+         $member = $this->repo->find($id);
          return view('members.edit', ['member' => $member]);
     }
     
@@ -86,7 +87,7 @@ class MemberController extends Controller
         ]);
         $postData = $request->all();
         
-        Member::findOrFail($id)->update($postData);
+        $this->repo->update($id, $postDate);
         
         Session::flash('success', 'Member was updated successfully!');
 
@@ -95,11 +96,27 @@ class MemberController extends Controller
     
     public function destroy($id)
     {
-        $member = Member::findOrFail($id); 
-        $member->delete();
+        $this->repo->destroy($id);
         
         Session::flash('success', 'Member was deleted successfully!');
 
         return redirect()->route('members.index');
+    }
+    
+    public function approve($id)
+    {
+        $req = $this->repo->register($id);
+        
+        if( $req->status === 'Unapproved'){
+            $req->status = 'Approved'; 
+            $req->save();
+            Session::flash("success", "Member's application approved for  $req->name");
+        }else{
+           $req->status = 'Unapproved';
+             $req->save();
+             Session::flash("success", "Member's application for  $req->name is declined");
+        }
+    
+        return redirect()->back();
     }
 }

@@ -13,4 +13,6 @@ interface MemberContract
     public function update($id, $requestData);
     
     public function destroy($id);
+    
+    public function register($id);
 }

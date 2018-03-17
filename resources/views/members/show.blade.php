@@ -14,6 +14,7 @@ Membership Registration Form
                         <a href="{{ route('members.index') }}"><button class="btn hidden-sm-down btn-success"><i class=""></i>View All Registered members</button></a>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
+                      
                         <button class="right-side-toggle waves-effect waves-light btn-info btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
                         <a href="{{ route('members.create') }}"><button class="btn pull-right hidden-sm-down btn-primary"><i class=""></i>Back</button></a>
                     </div>
@@ -32,13 +33,26 @@ Membership Registration Form
                                     <div class="card">
                                         <div class="card-body">
                                             <!--<center class="m-t-30"> <img src="{{ asset('images/1519390982.jpg')}}" class="img-circle" width="150" />-->
-                                            <center class="m-t-30"> <img src="{{ url('images/'.$member->image)}}" class="img-circle" width="150" />
+                                            <center class="m-t-30"> <img src="{{ url('images/'.$member->image)}}" class="img-circle" width="150" height="150" />
                                                 <h4 class="card-title m-t-10">{{ ucfirst($member->surname)}} - {{ ucfirst($member->othername) }}</h4>
                                                 <h6 class="card-subtitle">{{ $member->fileno}}</h6>
                                             </center>
                                         </div>
                                         <div>
-                                            <hr> </div>
+                                            <hr> 
+                                              @if ($member->status === 'Unapproved')
+                                                <td><span class="label label-danger">{{ $member->status }}</span></td>
+                                                @else
+                                                <td><span class="label label-success">{{ $member->status }}</span></td>
+                                                 @endif
+                                                 
+                                            <hr> 
+                                            <form action="{{ route('members.register', $member->id) }}" method="POST">
+                                                {!! csrf_field() !!}
+                                                <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-refresh"></i> Approve Member</button>
+                                            </form>
+                                            
+                                            </div>
                                  
                                     </div>
                                  </div>

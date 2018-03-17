@@ -31,6 +31,7 @@ class CreateLoansTable extends Migration
             $table->string('phone');
             $table->string('e_account');
             $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

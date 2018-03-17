@@ -13,7 +13,7 @@ use Session;
 class LoginController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::Auth();
         $members = Member::all();
         $products = Product::all();
         $loans = Loan::all();
@@ -27,11 +27,12 @@ class LoginController extends Controller
     public function postSignin(Request $request){
           $this->validate($request, [
             'email' => 'email|required',
-            'password' => 'required|min:4',
+            'password' => 'required|min:6',
         ]);
    
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-             return redirect()->route('dashboard');
+            
+            return redirect()->route('dashboard');
                 
         }
         Session::flash('error', 'Your username/password combination was incorrect');

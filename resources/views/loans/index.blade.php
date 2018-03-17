@@ -98,7 +98,7 @@
                                             
                                                 <!--<th><a href="{{ route('loans.edit', $loan->id) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit icon-white"></i></a></th>-->
                                               
-                                                <th><a title='Delete' class='btn btn-danger' href="{{ route('loans.destroy', $loan->id) }}"> <i class="glyphicon glyphicon-trash icon-white"></i></a>
+                                                <th><a class='btn btn-danger' data-toggle="tooltip" data-placement="top" title="Are You sure, You want to delete this Applied Loan" href="{{ route('loans.destroy', $loan->id) }}"> <i class="glyphicon glyphicon-trash icon-white"></i></a>
             
                                                 
                        </th>
