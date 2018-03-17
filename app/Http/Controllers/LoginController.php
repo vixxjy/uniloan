@@ -17,7 +17,7 @@ class LoginController extends Controller
         $members = Member::all();
         $products = Product::all();
         $loans = Loan::all();
-        return view('frontend.index', ['users' => $users, 'members' => $members, 'products' => $products, 'loans' => $loans]);
+        return view('frontend.set', ['users' => $users, 'members' => $members, 'products' => $products, 'loans' => $loans]);
     }
     
     public function signin(){
