@@ -27,7 +27,7 @@
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-inverse card-info">
                             <div class="box bg-info text-center">
-                                <h1 class="font-light text-white">{{ count($members)}}</h1>
+                               
                                 <h6 class="text-white">Members</h6>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-primary card-inverse">
                             <div class="box text-center">
-                                <h1 class="font-light text-white">{{ count($users)}}</h1>
+                                
                                 <h6 class="text-white">Users</h6>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-inverse card-success">
                             <div class="box text-center">
-                                <h1 class="font-light text-white">{{ count($loans)}}</h1>
+                            
                                 <h6 class="text-white">Loans</h6>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                         <br>
                                         <hr>
                                         <h4 class="card-title">Total Products</h4>
-                                        <h2 style="color: red; font-size: 30px;">{{ count($products)}}</h2>
+                                   
                                     </div>
                                 </div>
                              
