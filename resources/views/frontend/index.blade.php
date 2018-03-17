@@ -36,7 +36,7 @@
                     <div class="col-md-6 col-lg-3 col-xlg-3">
                         <div class="card card-primary card-inverse">
                             <div class="box text-center">
-                                <h1 class="font-light text-white">{{ count($users)}}</h1>
+                                <h1 class="font-light text-white">{{ count($userCount)}}</h1>
                                 <h6 class="text-white">Users</h6>
                             </div>
                         </div>

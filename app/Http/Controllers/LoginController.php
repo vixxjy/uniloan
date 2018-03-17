@@ -14,10 +14,11 @@ class LoginController extends Controller
 {
     public function index(){
         $users = Auth::user();
+        $userCount = User::all();
         $members = Member::all();
         $products = Product::all();
         $loans = Loan::all();
-        return view('frontend.set', ['users' => $users, 'members' => $members, 'products' => $products, 'loans' => $loans]);
+        return view('frontend.index', ['users' => $users, 'userCount' => $userCount, 'members' => $members, 'products' => $products, 'loans' => $loans]);
     }
     
     public function signin(){
