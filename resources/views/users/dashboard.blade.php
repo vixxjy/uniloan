@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
@@ -41,10 +42,12 @@
                                        <div class="card-body">
                                             <!--<center class="m-t-30"> <img src="{{ asset('images/1519390982.jpg')}}" class="img-circle" width="150" />-->
                                             <center class="m-t-30"> <img src="" class="img-circle" width="150" />
-                                                <h4 class="card-title m-t-10">WELCOME Name</h4>
-                                                <h6 class="card-subtitle">Member no</h6>
+                                                <h4 class="card-title m-t-10">WELCOME: Mr/Mrs {{ $users->name }}</h4>
+                                                <h6 class="card-subtitle">{{$users->email}}</h6>
                                                <hr>
-                                                <a href="#"><button class="btn btn-warning btn-lg">Become A Member</button></a>
+                                               <p>Register to be a member</p>
+                                               <hr>
+                                                <!--<a href="{{ route('members.create')}}"><button class="btn btn-warning btn-lg">Become A Member</button></a>-->
                                             </center>
                                       </div>
                                 </div>
@@ -79,6 +82,5 @@
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-      
 @endsection
 
