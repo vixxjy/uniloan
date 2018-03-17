@@ -81,7 +81,6 @@ class DatabaseSeeder extends Seeder
     private function createUser()
     {
         $admin = new User();
-        // $admin->fname = 'Admin';
         $admin->name = 'Admin';
         $admin->email = 'test@admin.com';
         $admin->password = bcrypt('secret');
