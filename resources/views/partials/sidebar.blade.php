@@ -42,9 +42,6 @@
                             <a class="has-arrow " href="{{ route('products.index')}}" aria-expanded="false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="hide-menu">Products</span></a>
                         </li>
                         
-                        <li>
-                            <a class="has-arrow " href="{{ route('products.index')}}" aria-expanded="false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="hide-menu">Products</span></a>
-                        </li>
                         @endhasanyrole
                         <!--<li>-->
                         <!--    <a class="has-arrow " href="{{ route('permissions.index')}}" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Permissions</span></a>-->
