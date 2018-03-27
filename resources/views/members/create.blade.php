@@ -166,7 +166,7 @@ Membership Registration Form
                                             <br>
                                             <br>
                                             <h5>BURSAR AUTHORIZATION</h5>
-                                            I hereby authorize the Bursar to deduct the said amount from my salary and with immediate effect and pay same to the account of the University of Jos Staff Multipurpose Cooperative Society Limited.
+                                            I hereby authorize the Bursar to deduct the said amount from my salary with immediate effect and pay same to the account of the University of Jos Staff Multipurpose Cooperative Society Limited.
                                             The authorization stands irrevocable as long as I am an employee of the University or write to withdraw from being a member of the society if necessary. 
                                           </div>
                                           <div class="modal-footer">
