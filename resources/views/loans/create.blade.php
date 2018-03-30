@@ -66,7 +66,7 @@ Membership Loan Application Form
                                     <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Date of Appointment</label>
                                         <div class="col-10">
-                                            <input class="form-control mydatepicker" placeholder="mm/dd/yyyy" type="text" value="{{ old('date_of_appointment') }}" name="date_of_appointment" id="example-text-input">
+                                            <input class="form-control mydatepicker" data-provide="datepicker" placeholder="mm/dd/yyyy" type="text" value="{{ old('date_of_appointment') }}" name="date_of_appointment" id="example-text-input">
                                         </div>
                                     </div>
                                     
@@ -85,7 +85,7 @@ Membership Loan Application Form
                                     <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Date Joined</label>
                                         <div class="col-10">
-                                            <input class="form-control mydatepicker" placeholder="mm/dd/yyyy" type="text" value="{{ old('date_joined') }}" name="date_joined" id="example-text-input">
+                                            <input class="form-control mydatepicker" data-provide="datepicker" placeholder="mm/dd/yyyy" type="text" value="{{ old('date_joined') }}" name="date_joined" id="example-text-input">
                                         </div>
                                     </div>
                                  
@@ -105,7 +105,7 @@ Membership Loan Application Form
                                     <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Date of Last Loan</label>
                                         <div class="col-10">
-                                            <input class="form-control mydatepicker" id="datepicker-autoclose" placeholder="mm/dd/yyyy" type="text" value="{{ old('date_of_last_loan') }}" name="date_of_last_loan" id="example-text-input">
+                                            <input class="form-control mydatepicker" data-provide="datepicker" placeholder="mm/dd/yyyy" type="text" value="{{ old('date_of_last_loan') }}" name="date_of_last_loan" id="example-text-input">
                                         </div>
                                     </div>
                                      <div class="form-group m-t-40 row">
@@ -165,14 +165,13 @@ Membership Loan Application Form
 @endsection
 
 @section('scripts')
-    <!-- Date Picker Plugin JavaScript -->
-    <script src="{{ asset('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
-    <script type="text/javascript" src="">
-           // Date Picker
-    jQuery('.mydatepicker, #datepicker').datepicker();
-    jQuery('#datepicker-autoclose').datepicker({
-        autoclose: true,
-        todayHighlight: true
-    });
-    </script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="">
+       // Date Picker
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
+</script>
 @endsection

@@ -33,8 +33,9 @@ class MemberController extends Controller
             'fileno' => 'required',
             'department' => 'required',
             'appointment' => 'required',
+            'date_joined' => 'required',
             'rank' => 'required',
-            'amount' => 'required',
+            'amount' => 'required|integer',
             'next_of_kin' => 'required',
             'address' => 'required',
             'phone' => 'required|max:11|min:11',
@@ -54,6 +55,7 @@ class MemberController extends Controller
         $input['image']->move(public_path('images'), $imageName);
         
         $input['image'] = $imageName;
+
     
          $this->repo->create($input);
         
@@ -69,7 +71,10 @@ class MemberController extends Controller
     
     public function edit($id){
          $member = $this->repo->find($id);
-         return view('members.edit', ['member' => $member]);
+          $banks = ['Guaranty Trust Bank', 'Access Bank', 'Citibank', 'Diamond Bank', 'Ecobank', 'Enterprise Bank', 'Fidelity Bank', 'First Bank', 'First City Monument Bank',
+        'FSDH Merchant Bank', 'Heritage Bank Plc', 'Keystone Bank Limited', 'Rand Merchant Bank', 'Skye Bank', 'Stanbic IBTC Bank', 'Standard Chartered Bank',
+        'Sterling Bank', 'Union Bank of Nigeria', 'United Bank for Africa', 'Unity Bank Plc', 'Wema Bank', 'Zenith Bank', 'FCMB Group Plc', 'Jaiz Bank Limited'];
+         return view('members.edit', ['member' => $member, 'banks' => $banks]);
     }
     
     public function update(Request $request, $id){
@@ -80,10 +85,11 @@ class MemberController extends Controller
             'department' => 'required',
             'appointment' => 'required',
             'rank' => 'required',
-            'amount' => 'required',
+            'date_joined' => 'required',
+            'amount' => 'required|integer',
             'next_of_kin' => 'required',
             'address' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|max:11|min:11',
         ]);
         $postData = $request->all();
         

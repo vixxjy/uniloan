@@ -45,7 +45,7 @@ Membership Registration Form
                                                 @else
                                                 <td><span class="label label-success">{{ $member->status }}</span></td>
                                                  @endif
-                                                 
+                                               <p>Date Joined: <b>{{ $member->date_joined }}</b></p>  
                                             <hr> 
                                             <form action="{{ route('members.register', $member->id) }}" method="POST">
                                                 {!! csrf_field() !!}

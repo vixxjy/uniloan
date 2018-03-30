@@ -51,11 +51,11 @@
                                                  <th>File No:</th>
                                                  <th>Surname</th>
                                                  <th>Department</th>
-                                                 <!--<th>Appointment</th>-->
-                                                 <th>Status/Rank</th>
+                                
                                                  <th>Amount/month</th>
-                                                 <!--<th>Address</th>-->
                                                  <th>Phone</th>
+                                                <th>Status</th>
+                                               
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -66,11 +66,11 @@
                                                  <th>File No:</th>
                                                  <th>Surname</th>
                                                  <th>Department</th>
-                                                 <!--<th>Appointment</th>-->
-                                                 <th>Status/Rank</th>
+                                                 
                                                  <th>Amount/month</th>
-                                                 <!--<th>Address</th>-->
                                                  <th>Phone No:</th>
+                                                 <th>Status</th>
+                                                 
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -82,18 +82,26 @@
                                                 <td>{{ $member->fileno }}</td>
                                                 <td>{{ $member->surname }}</td>
                                                 <td>{{ $member->department }}</td>
-                                                <!--<td>{{ $member->appointment }}</td>-->
-                                                <td>{{ $member->rank }}</td>
+                                               
                                                 <td>#{{ $member->amount }}</td>
-                                                <!--<td>{{ $member->address }}</td>-->
                                                 <td>{{ $member->phone }}</td>
+                                                 @if ($member->status === 'Unapproved')
+                                                <td><span class="label label-danger">{{ $member->status }}</span></td>
+                                                @else
+                                                <td><span class="label label-success">{{ $member->status }}</span></td>
+                                                 @endif
+                                                
                                                 
                                                 <th><a href="{{ route('members.show', $member->id) }}" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a></th>
                                                 @can('edit Member')
                                                 <th><a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit icon-white"></i></a></th>
                                                 @endcan
                                                 @can('delete Member')
-                                                <th><a class='btn btn-danger' data-toggle="tooltip" data-placement="top" title="Are You sure, You want to delete this Member" href="{{ route('members.destroy', $member->id) }}"> <i class="glyphicon glyphicon-trash icon-white"></i></a>
+                                               
+                                                <th>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                                 <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                </button>
                                                 @endcan
                                                 
                        </th>
@@ -101,7 +109,29 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel" style="color: red;">Warning Notification</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                           <b> Are you sure? You want this member deleted...</b>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <a class='btn btn-danger' data-toggle="tooltip" data-placement="top" href="{{ route('members.destroy', $member->id) }}"><button type="button" class="btn btn-danger">Delete</button></a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  <!--<button data-toggle="modal" data-target="#exampleModal">-->
+                                  <!--                  <a class='btn btn-danger' data-toggle="tooltip" data-placement="top" href="{{ route('members.destroy', $member->id) }}"> </a>-->
+                                  <!--              </button>-->
                            
                  
                             </div>

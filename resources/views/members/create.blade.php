@@ -4,6 +4,11 @@
 Membership Registration Form
 @endsection
 
+@section('styles')
+ <!-- Date picker plugins css -->
+    <link href="../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
   <!-- ============================================================== -->
             <!-- Container fluid  -->
@@ -66,6 +71,12 @@ Membership Registration Form
                                         </div>
                                     </div>
                                       <div class="form-group m-t-40 row">
+                                             <label for="example-text-input" class="col-2 col-form-label">Date Joined</label>
+                                            <div class="col-10" >
+                                                <input type="text" class="form-control" data-provide="datepicker" name="date_joined" value="{{ old('date_joined') }}" placeholder="mm/dd/yyyy">
+                                               </div>
+                                        </div>
+                                      <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Department</label>
                                         <div class="col-10">
                                             <input class="form-control" type="text" value="{{ old('department') }}" name="department" id="example-text-input">
@@ -75,8 +86,7 @@ Membership Registration Form
                                     <div class="form-group row">
                                         <label for="example-month-input" class="col-2 col-form-label">Appointment</label>
                                         <div class="col-10">
-                                            <select class="custom-select col-12" id="inlineFormCustomSelect" name="appointment">
-                                            <option selected="">Select Appointment Type</option>
+                                            <select class="custom-select col-12" id="inlineFormCustomSelect" name="appointment" required>
                                               <option value="permanent">Permanent</option>
                                                 <option value="contract">Contract</option>
                                                
@@ -94,7 +104,7 @@ Membership Registration Form
                                       <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Amount to be saved per month</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="text" value="{{ old('amount') }}" name="amount" id="example-text-input">
+                                            <input class="form-control" type="number" value="{{ old('amount') }}" name="amount" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group m-t-40 row">
@@ -112,14 +122,13 @@ Membership Registration Form
                                       <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Phone No:</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="text" value="{{ old('phone') }}" name="phone" id="example-text-input">
+                                            <input class="form-control" type="number" value="{{ old('phone') }}" name="phone" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-month-input" class="col-2 col-form-label">Bank</label>
                                         <div class="col-10">
-                                            <select class="custom-select col-12" id="inlineFormCustomSelect" name="bank">
-                                            <option style="color: red;">Select your bank</option>
+                                            <select class="custom-select col-12" id="inlineFormCustomSelect" name="bank" required>
                                               @foreach ($banks as $b => $bank)
                                                 <option value="{{ $banks[$b] }}">{{ $bank }}</option>
                                                 @endforeach
@@ -136,7 +145,7 @@ Membership Registration Form
                                     <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Bank Account No:</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="text" value="{{ old('acc_no') }}" name="acc_no" id="example-text-input">
+                                            <input class="form-control" type="number" value="{{ old('acc_no') }}" name="acc_no" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group m-t-40 row">
@@ -189,4 +198,16 @@ Membership Registration Form
 </div>
 
 
+@endsection
+
+@section('scripts')
+<!-- Date Picker Plugin JavaScript -->
+<script src="../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="">
+       // Date Picker
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
+</script>
 @endsection

@@ -87,7 +87,7 @@ Membership Registration Form
                                       <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Amount to be saved per month</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="text" value="{{ $member->amount }}" name="amount" id="example-text-input">
+                                            <input class="form-control" type="number" value="{{ $member->amount }}" name="amount" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group m-t-40 row">
@@ -105,16 +105,17 @@ Membership Registration Form
                                       <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Phone No:</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="text" value="{{ $member->phone }}" name="phone" id="example-text-input">
+                                            <input class="form-control" type="number" value="{{ $member->phone }}" name="phone" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-month-input" class="col-2 col-form-label">Bank</label>
                                         <div class="col-10">
                                             <select class="custom-select col-12" id="inlineFormCustomSelect" name="bank">
-                                            <option selected="">Select your bank</option>
-                                              <option value="gtbank">GT Bank</option>
-                                                <option value="diamond">Diamond</option>
+                                            <option style="color: red;">Select your bank</option>
+                                              @foreach ($banks as $b => $bank)
+                                                <option value="{{ $banks[$b] }}">{{ $bank }}</option>
+                                                @endforeach
                                                
                                             </select>
                                         </div>
@@ -126,9 +127,9 @@ Membership Registration Form
                                         </div>
                                     </div>
                                       <div class="form-group m-t-40 row">
-                                        <label for="example-text-input" class="col-2 col-form-label">Account Name</label>
+                                        <label for="example-text-input" class="col-2 col-form-label">Account No</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="text" value="{{ $member->acc_no }}" name="acc_no" id="example-text-input">
+                                            <input class="form-control" type="number" value="{{ $member->acc_no }}" name="acc_no" id="example-text-input">
                                         </div>
                                     </div>
                                     <!-- <div class="form-group">-->

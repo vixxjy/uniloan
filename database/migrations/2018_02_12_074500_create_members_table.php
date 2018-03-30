@@ -21,6 +21,7 @@ class CreateMembersTable extends Migration
             $table->string('department');
             $table->string('appointment');
             $table->string('rank');
+            $table->string('date_joined');
             $table->decimal('amount', 10, 2);
             $table->string('next_of_kin');
             $table->string('address');
