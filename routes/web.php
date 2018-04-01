@@ -13,7 +13,7 @@
 
 Route::get('/dashboard', ['uses'=> 'LoginController@index', 'as' => 'dashboard', 'middleware' => ['auth'] ]);
 
-Route::get('/', ['uses' => 'LoginController@signin', 'as' => 'signin']);
+Route::get('/', ['uses' => 'LoginController@signin', 'as' => 'login']);
 Route::post('/signin', ['uses' => 'LoginController@postSignin', 'as' => 'user.signin']);
 Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'logout', 'middleware' => ['auth']]);
 

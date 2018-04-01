@@ -14,6 +14,7 @@ class MemberController extends Controller
     protected $repo;
 	public function __construct(MemberContract $memberContract) {
 		$this->repo = $memberContract;
+		$this->middleware('auth');
 	}
 	
     public function index(){
