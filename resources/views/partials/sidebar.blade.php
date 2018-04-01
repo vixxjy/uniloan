@@ -21,16 +21,16 @@
                         </li>
                          
                         <!--<li class="nav-devider"></li>-->
-                        <li class="nav-small-cap"><a>LOANS & PAYMENTS</a></li>
-                         <li>
-                            <a class="has-arrow " href="{{ route('loans.index')}}" aria-expanded="false"><i class="glyphicon glyphicon-usd"></i><span class="hide-menu">Loans</span></a>
-                        </li>
-                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><i class="glyphicon glyphicon-credit-card"></i><span class="hide-menu">Payment</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-cards.html">Cards</a></li>
-                            </ul>
-                        </li>
+                        <!--<li class="nav-small-cap"><a>LOANS & PAYMENTS</a></li>-->
+                        <!-- <li>-->
+                        <!--    <a class="has-arrow " href="{{ route('loans.index')}}" aria-expanded="false"><i class="glyphicon glyphicon-usd"></i><span class="hide-menu">Loans</span></a>-->
+                        <!--</li>-->
+                        <!-- <li>-->
+                        <!--    <a class="has-arrow" href="#" aria-expanded="false"><i class="glyphicon glyphicon-credit-card"></i><span class="hide-menu">Payment</span></a>-->
+                        <!--    <ul aria-expanded="false" class="collapse">-->
+                        <!--        <li><a href="ui-cards.html">Cards</a></li>-->
+                        <!--    </ul>-->
+                        <!--</li>-->
                          @endhasanyrole
                          @hasanyrole('Admin|Staff')
                          <li class="nav-devider"></li>
@@ -38,9 +38,9 @@
                          <li>
                             <a class="has-arrow " href="{{ route('users.index')}}" aria-expanded="false"><i class="glyphicon glyphicon-user"></i><span class="hide-menu">Users</span></a>
                         </li>
-                        <li>
-                            <a class="has-arrow " href="{{ route('products.index')}}" aria-expanded="false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="hide-menu">Products</span></a>
-                        </li>
+                        <!--<li>-->
+                        <!--    <a class="has-arrow " href="{{ route('products.index')}}" aria-expanded="false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="hide-menu">Products</span></a>-->
+                        <!--</li>-->
                         
                         @endhasanyrole
                         <!--<li>-->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Member\MemberContract;
 use App\Member;
+use File;
 
 use Session;
 
@@ -47,8 +48,6 @@ class MemberController extends Controller
         
         $input = $request->all();
 
-        ///$input['status'] = 'Unapproved';
-        // dd($input);
         
         $imageName = time().'.'.$input['image']->getClientOriginalExtension();
 
@@ -65,11 +64,13 @@ class MemberController extends Controller
     }
     
     public function show($id){
+        $id = base64_decode($id);
         $member = $this->repo->find($id);
         return view('members.show', ['member' => $member]);
     }
     
     public function edit($id){
+        $id = base64_decode($id);
          $member = $this->repo->find($id);
           $banks = ['Guaranty Trust Bank', 'Access Bank', 'Citibank', 'Diamond Bank', 'Ecobank', 'Enterprise Bank', 'Fidelity Bank', 'First Bank', 'First City Monument Bank',
         'FSDH Merchant Bank', 'Heritage Bank Plc', 'Keystone Bank Limited', 'Rand Merchant Bank', 'Skye Bank', 'Stanbic IBTC Bank', 'Standard Chartered Bank',
@@ -86,14 +87,35 @@ class MemberController extends Controller
             'appointment' => 'required',
             'rank' => 'required',
             'date_joined' => 'required',
-            'amount' => 'required|integer',
+            'amount' => 'required',
             'next_of_kin' => 'required',
             'address' => 'required',
             'phone' => 'required|max:11|min:11',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $postData = $request->all();
         
-        $this->repo->update($id, $postDate);
+        $member = $this->repo->find($id);
+        $imageName = $member->image;
+        
+        if ($request->hasFile('image')) {
+            
+            unlink(public_path() .  '/images/' . $imageName);
+            
+            $newImageName = time().'.'.$postData['image']->getClientOriginalExtension();
+    
+            $postData['image']->move(public_path('images'), $newImageName);
+            
+            $postData['image'] = $newImageName;
+            
+            $this->repo->update($id, $postData);
+        }else {
+            
+             $postData['image'] = $imageName;
+             $this->repo->update($id, $postData);
+        }
+        
+        
         
         Session::flash('success', 'Member was updated successfully!');
 
@@ -102,9 +124,10 @@ class MemberController extends Controller
     
     public function destroy($id)
     {
+        $id = base64_decode($id);
         $this->repo->destroy($id);
         
-        Session::flash('success', 'Member was deleted successfully!');
+        Session::flash('success', 'Member was deleted successfully!!!');
 
         return redirect()->route('members.index');
     }

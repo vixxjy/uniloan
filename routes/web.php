@@ -54,8 +54,8 @@ Route::group(['prefix' => 'members', 'middleware' => ['auth']], function () {
     Route::get('/', 'MemberController@index')->name('members.index');
     Route::get('/create', 'MemberController@create')->name('members.create');
     Route::post('/create', 'MemberController@store')->name('members.store');
-    Route::get('/show/{id}', 'MemberController@show')->name('members.show');
-    Route::get('/edit/{id}', 'MemberController@edit')->name('members.edit');
+    Route::get('/{id}/show', 'MemberController@show')->name('members.show');
+    Route::get('/{id}/edit', 'MemberController@edit')->name('members.edit');
     Route::post('/edit/{id}', 'MemberController@update')->name('members.update');
     Route::get('/delete/{id}', 'MemberController@destroy')->name('members.destroy');
     Route::post('/register/{id}', 'MemberController@approve')->name('members.register');

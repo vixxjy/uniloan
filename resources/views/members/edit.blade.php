@@ -38,11 +38,16 @@ Membership Registration Form
                                 <div class="alert alert-success">{{ Session::get('success') }}</div>
                                 @endif
                            
-                                <form class="form" action="{{ route('members.update', $member->id) }}" method="POST">
+                                <form class="form" action="{{ route('members.update', $member->id) }}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
+                                     
                                     <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Surname</label>
-                                        <div class="col-10">
+                                      
+                                        <div class="col-4">
+                                          <center class="m-t-30"> <img src="{{ url('images/'.$member->image)}}" class="img-circle" width="150" height="150" />  
+                                        </div>
+                                          <div class="col-6">
                                             <input class="form-control" type="text" value="{{ $member->surname }}" name="surname" id="example-text-input">
                                         </div>
                                     </div>
@@ -58,6 +63,12 @@ Membership Registration Form
                                             <input class="form-control" type="text" value="{{ $member->fileno }}" name="fileno" id="example-text-input">
                                         </div>
                                     </div>
+                                     <div class="form-group m-t-40 row">
+                                             <label for="example-text-input" class="col-2 col-form-label">Date Joined</label>
+                                            <div class="col-10" >
+                                                <input type="text" class="form-control" data-provide="datepicker" name="date_joined" value="{{ $member->date_joined }}"  placeholder="mm/dd/yyyy">
+                                               </div>
+                                        </div>
                                       <div class="form-group m-t-40 row">
                                         <label for="example-text-input" class="col-2 col-form-label">Department</label>
                                         <div class="col-10">
@@ -69,7 +80,7 @@ Membership Registration Form
                                         <label for="example-month-input" class="col-2 col-form-label">Appointment</label>
                                         <div class="col-10">
                                             <select class="custom-select col-12" id="inlineFormCustomSelect" name="appointment">
-                                            <option selected="">Select Appointment Type</option>
+                                            <option selected="">{{ $member->appointment }}</option>
                                               <option value="permanent">Permanent</option>
                                                 <option value="contract">Contract</option>
                                                
@@ -112,7 +123,7 @@ Membership Registration Form
                                         <label for="example-month-input" class="col-2 col-form-label">Bank</label>
                                         <div class="col-10">
                                             <select class="custom-select col-12" id="inlineFormCustomSelect" name="bank">
-                                            <option style="color: red;">Select your bank</option>
+                                            <option style="color: red;">{{ $member->bank }}</option>
                                               @foreach ($banks as $b => $bank)
                                                 <option value="{{ $banks[$b] }}">{{ $bank }}</option>
                                                 @endforeach
@@ -131,6 +142,10 @@ Membership Registration Form
                                         <div class="col-10">
                                             <input class="form-control" type="number" value="{{ $member->acc_no }}" name="acc_no" id="example-text-input">
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Photo file upload</label>
+                                    <input type="file" class="form-control" name="image" id="exampleInputFile" aria-describedby="fileHelp">
                                     </div>
                                     <!-- <div class="form-group">-->
                                     <!--<label>Photo file upload</label>-->

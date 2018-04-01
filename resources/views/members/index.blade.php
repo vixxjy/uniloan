@@ -92,9 +92,9 @@
                                                  @endif
                                                 
                                                 
-                                                <th><a href="{{ route('members.show', $member->id) }}" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a></th>
+                                                <th><a href="{{ route('members.show', base64_encode($member->id)) }}" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a></th>
                                                 @can('edit Member')
-                                                <th><a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit icon-white"></i></a></th>
+                                                <th><a href="{{ route('members.edit', base64_encode($member->id)) }}" class="btn btn-warning"><i class="glyphicon glyphicon-edit icon-white"></i></a></th>
                                                 @endcan
                                                 @can('delete Member')
                                                
@@ -124,7 +124,7 @@
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <a class='btn btn-danger' data-toggle="tooltip" data-placement="top" href="{{ route('members.destroy', $member->id) }}"><button type="button" class="btn btn-danger">Delete</button></a>
+                                            <a class='btn btn-danger' data-toggle="tooltip" data-placement="top" href="{{ route('members.destroy', base64_encode($member->id)) }}"><button type="button" class="btn btn-danger">Delete</button></a>
                                           </div>
                                         </div>
                                       </div>
