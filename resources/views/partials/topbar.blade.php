@@ -48,8 +48,8 @@
                                         <div class="dw-user-box">
                                             <div class="u-img"><img src="{{ asset('assets/images/users/1.jpg')}}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Admin</h4>
-                                                <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                <h4>{{ $users->name }}</h4>
+                                                <p class="text-muted">{{ $users->email }}</p><a href="#" class="btn btn-rounded btn-danger btn-sm">Welcome</a></div>
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>

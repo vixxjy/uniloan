@@ -21,7 +21,7 @@ Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'logout', 'mi
 // Route::get('404',['as'=>'404','uses'=>'ErrorHandlerController@errorCode404']);
 // Route::get('405',['as'=>'405','uses'=>'ErrorHandlerController@errorCode405']);
 
-// Route::group(['prefix' => 'users', 'middleware' => ['auth']], function () {
+
 Route::group(['prefix' => 'users', 'middleware' => ['auth']], function () {
     Route::get('/', 'UserController@index')->name('users.index');
     Route::get('/create', 'UserController@create')->name('users.create');
